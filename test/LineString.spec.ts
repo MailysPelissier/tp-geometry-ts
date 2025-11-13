@@ -10,6 +10,7 @@ describe("test LineString", () => {
         expect(Number.isNaN(l.getNumPoints()));
         expect(l.getPointN(0)).to.equal(undefined)
         expect(l.getType()).to.equal("LineString");
+        expect(l.isEmpty()).to.be.true;
     });
     it("test constructor with 2 Points", () => {
         const p1 = new Point([1,3]);
@@ -19,5 +20,6 @@ describe("test LineString", () => {
         expect(l.getPointN(0)).to.equal(p1);
         expect(l.getPointN(10)).to.equal(undefined);
         expect(l.getType()).to.equal("LineString");
+        expect(l.isEmpty()).to.be.false;
     });
 });
