@@ -27,5 +27,10 @@ describe("test Point", () => {
         expect(p.getCoordinate()).to.deep.equal([5.0,2.0]);
         expect(pcopy.getCoordinate()).to.deep.equal([3.0,4.0]);
     });
+    it("envelope point", () => {
+        const p = new Point([3.0,4.0]);
+        const e = p.getEnvelope();
+        expect(e.toString()).to.equal("[3, 4, 3, 4]");
+    });
 });
 

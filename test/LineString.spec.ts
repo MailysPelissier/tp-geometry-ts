@@ -35,4 +35,12 @@ describe("test LineString", () => {
         expect(p3.getCoordinate()).to.deep.equal([1,3]);
         expect(p4.getCoordinate()).to.deep.equal([2,4]);
     });
+    it("envelope linestring", () => {
+        const p1 = new Point([1,3]);
+        const p2 = new Point([2,4]);
+        const p3 = new Point([5,2]);
+        const l = new LineString(Array(p1, p2, p3));
+        const e = l.getEnvelope();
+        expect(e.toString()).to.equal("[1, 2, 5, 4]");
+    });
 });
