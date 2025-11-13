@@ -20,5 +20,10 @@ describe("test Point", () => {
         expect(p.x()).to.equal(3.0);
         expect(p.y()).to.equal(4.0);
     });
+    it("translate point", () => {
+        const p = new Point([3.0,4.0]);
+        p.translate(2,-2);
+        expect(p.getCoordinate()).to.deep.equal([5.0,2.0]);
+    });
 });
 
