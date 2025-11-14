@@ -5,7 +5,7 @@ import Geometry from "./Geometry";
 
 export default class WktWriter {
     
-    write(geometry: Geometry): String {
+    write(geometry: Geometry): string {
         if (geometry instanceof Point){
             if (geometry.isEmpty()) {
                 return "POINT EMPTY";
