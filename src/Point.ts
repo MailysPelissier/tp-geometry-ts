@@ -1,7 +1,4 @@
 import Coordinate from "./Coordinate";
-import Geometry from "./Geometry";
-import Envelope from "./Envelope";
-import EnvelopeBuilder from "./EnvelopeBuilder";
 import GeometryVisitor from "./GeometryVisitor";
 import AbstractGeometry from "./AbstractGeometry";
 
@@ -33,12 +30,6 @@ export default class Point extends AbstractGeometry{
 
     clone(): Point {
         return new Point([this.x(), this.y()])
-    }
-
-    getEnvelope(): Envelope {
-        const builder = new EnvelopeBuilder();
-        builder.insert([this.x(), this.y()]);
-        return builder.build();
     }
 
     accept(visitor: GeometryVisitor): void {
