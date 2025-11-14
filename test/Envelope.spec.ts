@@ -1,6 +1,5 @@
 import "mocha";
 import { expect } from "chai";
-import Envelope from "../src/Envelope";
 import EnvelopeBuilder from "../src/EnvelopeBuilder";
 
 

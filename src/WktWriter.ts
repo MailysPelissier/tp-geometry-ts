@@ -1,4 +1,3 @@
-import Coordinate from "./Coordinate";
 import Point from "./Point";
 import LineString from "./LineString";
 import Geometry from "./Geometry";
