@@ -30,7 +30,7 @@ describe("test Point", () => {
     it("envelope point", () => {
         const p = new Point([3.0,4.0]);
         const e = p.getEnvelope();
-        expect(e.toString()).to.equal("[3, 4, 3, 4]");
+        expect(e.toString()).to.equal("[3.0, 4.0, 3.0, 4.0]");
     });
 });
 

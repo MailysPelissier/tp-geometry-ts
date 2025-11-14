@@ -26,6 +26,6 @@ describe("test Envelope", () => {
         expect(e.getYmin()).to.equal(0);
         expect(e.getXmax()).to.equal(2);
         expect(e.getYmax()).to.equal(3);
-        expect(e.toString()).to.equal("[0, 0, 2, 3]");
+        expect(e.toString()).to.equal("[0.0, 0.0, 2.0, 3.0]");
     });
 });

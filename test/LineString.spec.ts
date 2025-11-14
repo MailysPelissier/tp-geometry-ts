@@ -41,6 +41,6 @@ describe("test LineString", () => {
         const p3 = new Point([5,2]);
         const l = new LineString(Array(p1, p2, p3));
         const e = l.getEnvelope();
-        expect(e.toString()).to.equal("[1, 2, 5, 4]");
+        expect(e.toString()).to.equal("[1.0, 2.0, 5.0, 4.0]");
     });
 });
