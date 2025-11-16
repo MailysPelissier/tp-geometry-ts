@@ -2,6 +2,7 @@ import "mocha";
 import { expect } from "chai";
 import Point from "../src/Point";
 import LineString from "../src/LineString";
+import GeometryCollection from "../src/GeometryCollection";
 import WktVisitor from "../src/WktVisitor";
 
 
@@ -31,5 +32,21 @@ describe("test WktVisitor", () => {
         const l = new LineString(Array(p1, p2));
         l.accept(visitor);
         expect(visitor.getResult()).to.equal("LINESTRING(1.0 3.0,2.0 4.0)");
+    });
+    it("test empty geometrycollection", () => {
+        const visitor = new WktVisitor();
+        const g = new GeometryCollection();
+        g.accept(visitor);
+        expect(visitor.getResult()).to.equal("GEOMETRYCOLLECTION EMPTY");
+    });
+    it("test geometrycollection with geometries", () => {
+        const visitor = new WktVisitor();
+        const p1 = new Point([1,3]);
+        const p2 = new Point([2,4]);
+        const p3 = new Point([2,5]);
+        const l = new LineString(Array(p1, p2));
+        const c = new GeometryCollection([l, p3]);
+        c.accept(visitor);
+        expect(visitor.getResult()).to.equal("GEOMETRYCOLLECTION(LINESTRING(1.0 3.0,2.0 4.0),POINT(2.0 5.0))");
     });
 });

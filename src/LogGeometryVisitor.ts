@@ -1,5 +1,6 @@
 import Point from "./Point";
 import LineString from "./LineString";
+import GeometryCollection from "./GeometryCollection";
 import GeometryVisitor from "./GeometryVisitor";
 
 
@@ -24,6 +25,15 @@ export default class LogGeometryVisitor implements GeometryVisitor {
         else {
             this.log("Je suis une polyligne définie par " + linestring.getNumPoints() + " point(s).");
         }   
+    }
+
+    visitGeometryCollection(geometrycollection: GeometryCollection): void {
+        if (geometrycollection.isEmpty()) {
+            this.log("Je suis une collection de géométries vide.");
+        }
+        else {
+            this.log("Je suis une collection de géométries définie par " + geometrycollection.getNumGeometries() + " géométrie(s).");
+        } 
     }
 
 }

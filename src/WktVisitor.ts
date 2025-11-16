@@ -1,6 +1,7 @@
 import GeometryVisitor from "./GeometryVisitor";
-import LineString from "./LineString";
 import Point from "./Point";
+import LineString from "./LineString";
+import GeometryCollection from "./GeometryCollection";
 
 
 export default class WktVisitor implements GeometryVisitor {
@@ -25,6 +26,25 @@ export default class WktVisitor implements GeometryVisitor {
             for (let i=0; i<n; i++) {
                 let point:Point = geometry.getPointN(i);
                 txt += point.x().toFixed(1) + " " + point.y().toFixed(1);
+                if (i != n-1) {
+                    txt += ",";
+                }
+            }
+            txt += ")";
+            this.buffer = txt;
+        }
+    }
+
+    visitGeometryCollection(geometry: GeometryCollection): void {
+        if (geometry.isEmpty()) {
+            this.buffer = "GEOMETRYCOLLECTION EMPTY";
+        }
+        else {
+            let txt = "GEOMETRYCOLLECTION(";
+            let n = geometry.getNumGeometries();
+            for (let i=0; i<n; i++) {
+                let geom = geometry.getGeometryN(i);
+                txt += geom.asText();
                 if (i != n-1) {
                     txt += ",";
                 }
