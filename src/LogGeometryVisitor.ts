@@ -4,7 +4,7 @@ import GeometryCollection from "./GeometryCollection";
 import GeometryVisitor from "./GeometryVisitor";
 
 
-export default class LogGeometryVisitor implements GeometryVisitor {
+export default class LogGeometryVisitor implements GeometryVisitor<void> {
 
     constructor (private log = console.log) {      
     }

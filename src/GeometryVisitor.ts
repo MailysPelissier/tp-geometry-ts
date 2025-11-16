@@ -3,8 +3,8 @@ import LineString from "./LineString";
 import GeometryCollection from "./GeometryCollection";
 
 
-export default interface GeometryVisitor {
-    visitPoint(point: Point): void;
-    visitLineString(linestring: LineString): void;
-    visitGeometryCollection(geometrycollection: GeometryCollection): void;
+export default interface GeometryVisitor<T> {
+    visitPoint(point: Point);
+    visitLineString(linestring: LineString);
+    visitGeometryCollection(geometrycollection: GeometryCollection);
 }

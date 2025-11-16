@@ -6,7 +6,7 @@ import LineString from "./LineString";
 import GeometryCollection from "./GeometryCollection";
 
 
-export default class EnvelopeBuilder implements GeometryVisitor {
+export default class EnvelopeBuilder implements GeometryVisitor<void> {
     private xMin = Infinity;
     private xMax = -Infinity;
     private yMin = Infinity;

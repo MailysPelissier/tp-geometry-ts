@@ -4,7 +4,7 @@ import LineString from "./LineString";
 import GeometryCollection from "./GeometryCollection";
 
 
-export default class WktVisitor implements GeometryVisitor {
+export default class WktVisitor implements GeometryVisitor<string> {
     private buffer: string;
 
     visitPoint(geometry: Point): void {
