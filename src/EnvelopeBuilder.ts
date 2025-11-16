@@ -12,6 +12,7 @@ export default class EnvelopeBuilder implements GeometryVisitor {
     private yMax = -Infinity;
 
     insert(coordinate: Coordinate): void {
+        if (!coordinate || !isFinite(coordinate[0]) || !isFinite(coordinate[1])) return;
         this.xMin = Math.min(this.xMin, coordinate[0]);
         this.xMax = Math.max(this.xMax, coordinate[0]);
         this.yMin = Math.min(this.yMin, coordinate[1]);

@@ -5,11 +5,12 @@ import GeometryVisitor from "./GeometryVisitor";
 
 export default class GeometryWithCachedEnvelope implements Geometry {
     private original: Geometry;
-    private cachedEnvelope: Envelope | null = null;
+    private cachedEnvelope: Envelope;
 
-    // constructor(original: Geometry) {
-    //     this.original = original;   
-    // }
+    constructor(original: Geometry) {
+        this.original = original;
+        this.cachedEnvelope = new Envelope();
+    }
 
     getType(): string {
         return this.original.getType();
@@ -21,16 +22,19 @@ export default class GeometryWithCachedEnvelope implements Geometry {
 
     translate(dx: number, dy: number): void {
         this.original.translate(dx, dy);
-        this.cachedEnvelope = null;
+        this.cachedEnvelope = new Envelope();
     }
 
     clone(): Geometry {
-        // return new GeometryWithCachedEnvelope(this.original.clone());
-        return this.original.clone();
+        const clone = new GeometryWithCachedEnvelope(this.original.clone());
+        if (!this.cachedEnvelope.isEmpty()) {
+            clone.getEnvelope();
+        }
+        return clone;
     }
 
     getEnvelope(): Envelope {
-        if (this.cachedEnvelope === null) {
+        if (this.cachedEnvelope.isEmpty()) {
             this.cachedEnvelope = this.original.getEnvelope();
         }
         return this.cachedEnvelope;

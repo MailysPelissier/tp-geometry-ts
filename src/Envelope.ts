@@ -6,8 +6,8 @@ export default class Envelope {
     private topRight?: Coordinate;
 
     constructor(bottomLeft?: Coordinate, topRight?: Coordinate) {
-        this.bottomLeft = bottomLeft || [];
-        this.topRight = topRight || [];
+        this.bottomLeft = bottomLeft ?? [Infinity,Infinity];
+        this.topRight = topRight ?? [-Infinity,-Infinity];
     }
 
     isEmpty(): boolean {
